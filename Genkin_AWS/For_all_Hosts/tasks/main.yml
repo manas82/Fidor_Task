@@ -1,0 +1,7 @@
+---
+
+   - include: update_system.yaml
+   - include: Docker_install.yml
+   - include: ansible-docker-compose_install.yml
+   - include: Docker_Swarm_setup.yml
+   

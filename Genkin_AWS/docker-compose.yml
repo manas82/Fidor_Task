@@ -1,0 +1,39 @@
+version: "3"
+services: 
+ wordpress:
+  image: wordpress
+  deploy: 
+   replicas: 1
+   resources: 
+    limits: 
+     cpus: ".25"
+     memory: 100M
+  ports: 
+   - "80:80"
+  networks: 
+   - front_end
+   - back_end
+  environment:
+   WORDPRESS_DB_HOST: db:3306
+   WORDPRESS_DB_USER: wordpressuser
+   WORDPRESS_DB_PASSWORD: wordpress
+ db: 
+  image: mysql:5.7
+  volumes:
+   - db-data:/var/lib/mysql
+  networks:
+   - back_end
+  deploy:
+   placement:
+    constraints: [node.role == manager]
+  environment:
+   MYSQL_ROOT_PASSWORD: mypassword
+   MYSQL_DATABASE: wordpress
+   MYSQL_USER: wordpressuser
+   MYSQL_PASSWORD: wordpress
+networks:
+    back_end:
+    front_end:
+volumes:
+ db-data:
+

@@ -1,0 +1,7 @@
+---
+- hosts: fidor
+  become: yes
+  roles: 
+   - For_all_Hosts
+
+  

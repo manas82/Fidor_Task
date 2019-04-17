@@ -1,0 +1,11 @@
+---
+  
+   - name: Install Docker Amazone EC2
+     yum:
+      name:
+       - docker
+      state: present
+     notify: docker
+
+   
+
